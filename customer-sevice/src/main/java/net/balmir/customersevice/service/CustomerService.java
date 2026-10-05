@@ -16,10 +16,17 @@ public class CustomerService {
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
+    // Chercher un customer by Id
     public Customer findById(Long id) {
         return customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer Not Found")
+                .orElseThrow(() -> new RuntimeException("Customer Not Found"));
     }
+    //Ajouter un customer
+    public Customer saveCustomer (Customer customer) {
+        return customerRepository.save(customer);
+    }
+
+    //
 
 
 }
