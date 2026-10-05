@@ -18,12 +18,14 @@ public class CustomerRestController {
 
     @GetMapping("/customers")
     public List<Customer> getAllCustomers() {
+
         return customerService.getAllCustomers();
     }
-    @GetMapping("/customers/id")
+    @GetMapping("/customers/{id}")
     public Customer findById(@PathVariable Long id) {
         return customerService.findById(id);
     }
+
     @PostMapping("/customers")
     public Customer saveCustomer(@RequestBody Customer customer) {
         return customerService.saveCustomer(customer);
