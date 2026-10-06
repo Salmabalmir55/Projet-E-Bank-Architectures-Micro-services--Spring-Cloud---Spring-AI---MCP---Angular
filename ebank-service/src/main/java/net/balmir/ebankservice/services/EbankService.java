@@ -3,6 +3,7 @@ package net.balmir.ebankservice.services;
 
 import net.balmir.ebankservice.entities.BankAccount;
 import net.balmir.ebankservice.feign.CustomerRestClient;
+import net.balmir.ebankservice.model.Customer;
 import net.balmir.ebankservice.repository.BankAccountRepository;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +38,15 @@ public class EbankService {
     }
 
     public BankAccount save(BankAccount bankAccount){
-        bankAccount.setId(UUID.randomUUID().toString());
-        bankAccount.setCreatedAt(new Date());
-        return accountRepository.save(bankAccount);
+        try {
+            Customer customer = customerRestClient.getCustomerById(bankAccount.getCustomerId());
+            bankAccount.setId(UUID.randomUUID().toString());
+            bankAccount.setCreatedAt(new Date());
+            return accountRepository.save(bankAccount);
+        } catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
 }
