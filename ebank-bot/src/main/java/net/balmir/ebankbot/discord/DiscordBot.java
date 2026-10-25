@@ -3,7 +3,7 @@ package net.balmir.ebankbot.discord;
 import com.zgamelogic.discord.annotations.DiscordController;
 import com.zgamelogic.discord.annotations.DiscordMapping;
 import jakarta.annotation.PostConstruct;
-import net.balmir.ebankbot.agent.EbankAIAgent;
+import net.balmir.ebankbot.agents.EbankAIAgent;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
